@@ -2,9 +2,7 @@ import asyncio
 
 from multi_tool_agent.aync_agent_caller import call_agent_async
 from multi_tool_agent.constants import USER_ID, SESSION_ID
-from multi_tool_agent.runner_anthropic import weather_agent_runner_anthropic, ANTHROPIC
-from multi_tool_agent.runner_gemini import weather_agent_runner_gemini, GEMINI
-from multi_tool_agent.runner_gpt4 import weather_agent_runner_gpt4, GPT
+from multi_tool_agent.runners.runner_gemini import weather_agent_runner_gemini, GEMINI
 import os
 
 

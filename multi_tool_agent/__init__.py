@@ -1,2 +1,2 @@
-from . import weather_agent
+from .agents import weather_agent
 from . import constants

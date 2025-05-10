@@ -5,7 +5,7 @@ from google.adk import Runner
 from google.adk.sessions import InMemorySessionService
 
 from multi_tool_agent.constants import APP_NAME, USER_ID, SESSION_ID
-from multi_tool_agent.weather_agent import weather_agent_anthropic
+from multi_tool_agent.agents.weather_agent import weather_agent_anthropic
 
 weather_agent_user_session_service = InMemorySessionService()
 
