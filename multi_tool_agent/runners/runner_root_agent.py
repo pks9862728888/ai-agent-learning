@@ -9,11 +9,16 @@ from multi_tool_agent.constants import APP_NAME, USER_ID, SESSION_ID, GEMINI
 
 root_agent_user_session_service = InMemorySessionService()
 
+initial_state = {
+    "user_preference_temperature_unit": "Celsius"
+}
+
 # Create the specific session where the conversation will happen
 session = root_agent_user_session_service.create_session(
     app_name=APP_NAME + GEMINI,
     user_id=USER_ID + GEMINI,
-    session_id=SESSION_ID + GEMINI
+    session_id=SESSION_ID + GEMINI,
+    state=initial_state
 )
 
 root_agent_runner_gemini = Runner(

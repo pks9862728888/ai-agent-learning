@@ -2,8 +2,8 @@ import asyncio
 import os
 
 from multi_tool_agent.aync_agent_caller import call_agent_async
-from multi_tool_agent.constants import USER_ID, SESSION_ID, GEMINI
-from multi_tool_agent.runners.runner_root_agent import root_agent_runner_gemini
+from multi_tool_agent.constants import USER_ID, SESSION_ID, GEMINI, APP_NAME
+from multi_tool_agent.runners.runner_root_agent import root_agent_runner_gemini, root_agent_user_session_service
 
 
 def print_response(value):
@@ -15,6 +15,15 @@ async def run_conversation(runner, model_type):
                                           runner=runner,
                                           user_id=USER_ID + model_type,
                                           session_id=SESSION_ID + model_type))
+
+    print_response(await call_agent_async("What is the weather like in London?",
+                                          runner=runner,
+                                          user_id=USER_ID + model_type,
+                                          session_id=SESSION_ID + model_type))
+
+    # Updating the state manually so that it can communicate the updated state
+    stored_session = root_agent_user_session_service.sessions[APP_NAME + GEMINI][USER_ID + GEMINI][SESSION_ID + GEMINI]
+    stored_session.state["user_preference_temperature_unit"] = "Fahrenheit"
 
     print_response(await call_agent_async("What is the weather like in London?",
                                           runner=runner,
