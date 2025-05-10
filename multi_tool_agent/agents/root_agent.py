@@ -48,6 +48,7 @@ def create_root_agent(model, model_type, weather_agent_gemini, greeting_agent, f
         print(f"An error occurred while creating root agent, {e}")
         raise
 
+
 weather_agent_gemini = create_weather_agent(MODEL_GEMINI_2_0_FLASH, "gemini")
 greeting_agent = create_greeting_agent(MODEL_GEMINI_2_0_FLASH, "gemini")
 farewell_agent = create_farewell_agent(MODEL_GEMINI_2_0_FLASH, "gemini")
