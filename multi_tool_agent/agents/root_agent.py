@@ -5,6 +5,7 @@ from multi_tool_agent.agents.farewell_agent import create_farewell_agent
 from multi_tool_agent.agents.greeting_agent import create_greeting_agent
 from multi_tool_agent.agents.weather_agent import create_weather_agent
 from multi_tool_agent.constants import MODEL_GEMINI_2_0_FLASH
+from multi_tool_agent.filters.block_keyword_guardrail import block_keyword_guardrail
 
 
 # @title Define the Root Agent with Sub-Agents
@@ -40,7 +41,8 @@ def create_root_agent(model, model_type, weather_agent_gemini, greeting_agent, f
                         "If it's a weather request, delegate to 'weather_agent_gemini'. "
                         "For anything else, respond appropriately or state you cannot handle it using apologize tool call.",
             tools=[apologize],
-            sub_agents=[weather_agent_gemini, greeting_agent, farewell_agent]
+            sub_agents=[weather_agent_gemini, greeting_agent, farewell_agent],
+            before_model_callback=block_keyword_guardrail
         )
     except Exception as e:
         print(f"An error occurred while creating root agent, {e}")

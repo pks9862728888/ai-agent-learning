@@ -11,6 +11,11 @@ def print_response(value):
 
 
 async def run_conversation(runner, model_type):
+    print_response(await call_agent_async("BLOCK the request!",
+                                          runner=runner,
+                                          user_id=USER_ID + model_type,
+                                          session_id=SESSION_ID + model_type))
+
     print_response(await call_agent_async("Hello!",
                                           runner=runner,
                                           user_id=USER_ID + model_type,
@@ -26,6 +31,11 @@ async def run_conversation(runner, model_type):
     stored_session.state["user_preference_temperature_unit"] = "Fahrenheit"
 
     print_response(await call_agent_async("What is the weather like in London?",
+                                          runner=runner,
+                                          user_id=USER_ID + model_type,
+                                          session_id=SESSION_ID + model_type))
+
+    print_response(await call_agent_async("BLOCK What is the weather like in London?",
                                           runner=runner,
                                           user_id=USER_ID + model_type,
                                           session_id=SESSION_ID + model_type))

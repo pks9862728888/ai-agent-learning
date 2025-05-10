@@ -3,6 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 from google.adk.tools import ToolContext
 
 from multi_tool_agent.constants import *
+from multi_tool_agent.filters.block_keyword_guardrail import block_keyword_guardrail
 
 
 def get_weather(city: str, tool_context: ToolContext) -> dict:
@@ -72,7 +73,8 @@ def create_weather_agent(model, model_type):
                         "If the tool returns an error, inform the user politely. "
                         "If the tool is successful, present the weather report clearly.",
             tools=[get_weather],
-            output_key="last_weather_report"
+            output_key="last_weather_report",
+            before_model_callback=block_keyword_guardrail
         )
     except Exception as e:
         print(f"An error occurred while creating weather agent, {e}")
