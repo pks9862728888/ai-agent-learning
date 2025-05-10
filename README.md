@@ -31,7 +31,18 @@ Get API key and insert below:
 ```shell
 GOOGLE_GENAI_USE_VERTEXAI=FALSE
 GOOGLE_API_KEY=insert api key
+OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
 ```
+https://console.anthropic.com/settings/keys
+
+MODEL_GEMINI_2_0_FLASH = "gemini-2.0-flash"
+> Note: Specific model names might change. Refer to LiteLLM/Provider documentation.
+
+MODEL_GPT_4O = "openai/gpt-4o"
+
+MODEL_CLAUDE_SONNET = "anthropic/claude-3-sonnet-20240229"
+
 
 # Interacting with agent <hr />
 - UI based
