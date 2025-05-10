@@ -1,6 +1,9 @@
 # About <hr />
 ADK is a Python framework designed to streamline the development of applications powered by Large Language Models (LLMs). It offers robust building blocks for creating agents that can reason, plan, utilize tools, interact dynamically with users, and collaborate effectively within a team.
 
+ADK makes switching between models seamless through its integration with the LiteLLM library. LiteLLM acts as a consistent interface to over 100 different LLMs.
+
+
 ## Instructions followed from <hr />
 https://google.github.io/adk-docs/get-started/installation/
 https://github.com/google/adk-docs/tree/main/examples/python/tutorial/agent_team/adk-tutorial
@@ -13,6 +16,9 @@ python -m venv .venv
 pip install google-adk
 
 pip install litellm
+
+pip install anthropic
+
 
 ## Verify installation <hr />
 pip show google-adk
@@ -35,6 +41,8 @@ OPENAI_API_KEY=
 ANTHROPIC_API_KEY=
 ```
 https://console.anthropic.com/settings/keys
+https://aistudio.google.com/apikey
+https://platform.openai.com/api-keys
 
 MODEL_GEMINI_2_0_FLASH = "gemini-2.0-flash"
 > Note: Specific model names might change. Refer to LiteLLM/Provider documentation.
