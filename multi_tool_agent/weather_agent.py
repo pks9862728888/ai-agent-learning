@@ -58,14 +58,16 @@ def get_current_time(city: str) -> dict:
     return {"status": "success", "report": report}
 
 
-root_agent = Agent(
-    name="weather_time_agent",
+weather_agent = Agent(
+    name="weather_agent_v1",
     model=MODEL_GEMINI_2_0_FLASH,
     description=(
-        "Agent to answer questions about the time and weather in a city."
+        "Provides weather information for specific cities."
     ),
-    instruction=(
-        "You are a helpful agent who can answer user questions about the time and weather in a city."
-    ),
-    tools=[get_weather, get_current_time],
+    instruction="You are a helpful weather assistant. "
+                "When the user asks for the weather in a specific city, "
+                "use the 'get_weather' tool to find the information. "
+                "If the tool returns an error, inform the user politely. "
+                "If the tool is successful, present the weather report clearly.",
+    tools=[get_weather],
 )
